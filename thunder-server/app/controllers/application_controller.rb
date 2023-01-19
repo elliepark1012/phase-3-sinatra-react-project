@@ -6,4 +6,8 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
+  get "/events" do 
+    event = Events.all.order
+    event.to_json
+  end
 end

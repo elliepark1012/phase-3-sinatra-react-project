@@ -1,12 +1,12 @@
 import React from "react";
+import EventListItem from "./EventListItem";
 
 function EventList({ events }) {
     return (
         <div className="list">
       <ul>
         {events.map((event) => 
-        
-         <p key={event.id}>{event.name}</p>)}
+        <EventListItem key={event.id} event={event}/>)}
       </ul>
     </div>
     )

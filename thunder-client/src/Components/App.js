@@ -22,9 +22,9 @@ function App() {
   return (
    <div>
       <Header />
-      <NewEvent />
+      {/* <NewEvent />
       <Search search={search} onSearchChange={setSearch} />
-      <EventList events={displayedEvents}/>
+      <EventList events={displayedEvents}/> */}
     </div>
   )
 }

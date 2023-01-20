@@ -54,6 +54,52 @@ body {
   color: var(--left-color);
 }
 
+.nav-bar {
+  background-color:#101357;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  color: #ffa8B6;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 120px;
+}
+
+.logo {
+  cursor:pointer;
+  width: 300px;
+}
+
+.nav-area {
+  list-style:none;
+}
+
+.nav-area li {
+  display: inline-block;
+  padding: 0 60px;
+  text-transform: uppercase;
+}
+
+button {
+  cursor: pointer;
+  color: var(--c2);
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: var(--c1);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 25px;
+}
 /* 
 html {
   background-color: black;

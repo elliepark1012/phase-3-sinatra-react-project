@@ -3,6 +3,7 @@ import Header from "./Header";
 import NewEvent from "./NewEventForm";
 import Search from "./Search";
 import EventList from "./EventList"
+import NavBar from "./NavBar";
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -21,6 +22,7 @@ function App() {
   
   return (
    <div>
+      <NavBar />
       <Header />
       {/* <NewEvent />
       <Search search={search} onSearchChange={setSearch} />

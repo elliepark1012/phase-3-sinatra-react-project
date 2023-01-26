@@ -12,19 +12,18 @@ function Header() {
 document.onmousemove = e => handleMove(e);
 document.ontouchmove = e => handleMove(e.touches[0]);
 
-
 return (
-  <div style={{width:width}} >
+  <div className="grid-header-box" style={{width:width}} >
     <div id="left-side" className="side">
       <h2 className="title">
         Every gathering 
-        <br></br>has <span class="fancy"> its MOMENT</span>
+        <br></br>has <span className="fancy"> its MOMENT</span>
       </h2>
     </div>
     <div id="right-side" className="side">
       <h2 className="title">
         Every gathering  
-        <br></br>has <span class="fancy"> no PRESSURE</span>
+        <br></br>has <span className="fancy"> no PRESSURE</span>
       </h2>
     </div>
   </div>

@@ -14,7 +14,7 @@ Event.create(name: "Argentine Tango",
             time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
             location: "Ukrainian East Village Restaurant",
             about: "In this fun meetup, you can take a beginning tango class and learn the basics of this fun dance, and you can also eat delicious Ukrainian food, have some wine or other alcohol, watch tango dancers all night at your own table, or any combination of those things! This event is super friendly and relaxed. You can just watch, or just take a class, or just eat and drink, or all of those things.",
-            image_url: "https://wallpapercave.com/wp/yXmbxhx.jpg",
+            image_url: "https://images-na.ssl-images-amazon.com/images/S/cmx-images-prod/Item/48457/DIG010147_1._SX360_QL80_TTD_.jpg",
             category_id: 1) 
 
 Event.create(name: "The Art of Sensual Pole Dancing",

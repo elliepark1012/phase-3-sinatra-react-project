@@ -1,3 +1,8 @@
+body {
+  text-align: center;
+  align-items: center;
+}
+
 :root {
   --dark: rgb(20, 20, 20);
   --c1: #ffa8B6;
@@ -7,18 +12,65 @@
   --right-color: var(--c2);
 }
 
-body {  
-  background-color: var(--dark);
-  margin: 0px;
+.wrapper {
+  display: grid;
 }
 
+/* Navbar.js */
+.grid-nav-bar {
+  background-color:#101357;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: #ffa8B6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 120px;
+}
+
+.logo {
+  cursor:pointer;
+  width: 300px;
+}
+
+.nav-area {
+  list-style:none;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.nav-area li {
+  padding: 0 50px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  color: var(--c2);
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: var(--c1);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+/* Header.js */
 .side {
+  position: absolute;
+  width: 100%;
   display: grid;
   height: 100vh;
   overflow: hidden;
   place-items: center;
   position: absolute;
   width: 100%;
+  text-align: center;
 }
 
 .side .title {
@@ -54,88 +106,103 @@ body {
   color: var(--left-color);
 }
 
-.nav-bar {
-  background-color:#101357;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: 600;
-  font-size: 30px;
-  margin: 0;
-  padding: 0;
-  color: #ffa8B6;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 120px;
-}
-
-.logo {
-  cursor:pointer;
-  width: 300px;
-}
-
-.nav-area {
-  list-style:none;
-}
-
-.nav-area li {
-  display: inline-block;
-  padding: 0 60px;
-  text-transform: uppercase;
-}
-
-button {
-  cursor: pointer;
-  color: var(--c2);
-  font-size: 20px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 10px;
-  border-radius: 7px;
-  background-color: var(--c1);
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: 600;
-  font-size: 25px;
-}
-/* 
-html {
-  background-color: black;
-}
-
-.side {
-  height: 100vh;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
+/* Eventlist.js */
+.events {
   position: absolute;
-
+  top: 1100px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
-.side .title {
-  color: white;
-  font-family: sans-serif;
-  font-size: 8vw;
-  margin: 0px 15vw;
-  width: 70vw;
+.search__container {
+    width: 600px;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+    padding-top: 30px;
 }
-
-#left-side {
-  background-color: var(#0A1627);
-  z-index: 2;
-}
-
-#right-side {
-  background-color: var(#FE0039);
+    
+.search__title {
+        font-size: 60px;
+        font-weight: 900;
+        color: #ff8b88;
+        text-align: center;
+  align-items: center;
+ }
+    
+.search__input {
+        width: 100%;
+        padding: 25px 25px;
+        background-color: transparent;
+        font-size: 25px;
+        line-height: 25px;
+        text-align: center;
+        color: #575756;
 } */
 
+/* Eventlist-item.js */
 
+.grid-eventlists {
+  top: 1500px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+.card-img {
+  width: 100px;
+  height: 100px}
 
+.grid-item {
+    display: flex;
+    padding: 1rem;
+  @media(min-width: 40rem) {
+    width: 50%;
+  }
+  @media(min-width: 56rem) {
+    width: 33.3333%;
+  }
+}
 
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  }
 
-
-
+  .card {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .card-img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    filter: contrast(70%);
+  }
+  
+  .card-header {
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  .card-content {
+    flex: 1 1 auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+  
+  

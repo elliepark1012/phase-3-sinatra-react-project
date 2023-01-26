@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import NewEvent from "./NewEventForm";
-import Search from "./Search";
 import EventList from "./EventList"
 import NavBar from "./NavBar";
 
@@ -19,14 +18,16 @@ function App() {
     event.name.toLowerCase().includes(search.toLowerCase()) 
   );
 
-  
   return (
-   <div>
+   <div className="wrapper">
       <NavBar />
       <Header />
-      {/* <NewEvent />
-      <Search search={search} onSearchChange={setSearch} />
-      <EventList events={displayedEvents}/> */}
+      <EventList
+         search={search} 
+         onSearchChange={setSearch}
+         events={displayedEvents}
+         />
+      <NewEvent />
     </div>
   )
 }

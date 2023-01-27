@@ -52,9 +52,13 @@ function NewEvent() {
 
 
     return (
-        <div>
-        <section>
-        <form className="form" autoComplete="off" onSubmit={handleSubmit}>
+        <div className="container">
+            <h1 className="form-title"> Create an Event </h1>
+            <form 
+                className="form" 
+                autoComplete="off" 
+                onSubmit={handleSubmit}
+            >
                 <label htmlFor="name">Name</label>
                 <input 
                     type="text"
@@ -92,12 +96,12 @@ function NewEvent() {
                     onChange={handleChange}
                     value={formData.about}
                 />
-                   <DateTimePicker onChange={setTime} value={time} /> 
-                <button type="sumbmit" onClick={handleClick}> Become a Partner</button>
+                <DateTimePicker  
+                    onChange={setTime} 
+                    value={time} />   
+                <button className="form-button" type="sumbmit" onClick={handleClick}> Add New Event</button>
         </form>
-        </section>
- 
-        </div>
+    </div>
     )
 }
 

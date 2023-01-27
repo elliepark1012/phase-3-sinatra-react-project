@@ -3,6 +3,7 @@ import Header from "./Header";
 import NewEvent from "./NewEventForm";
 import EventList from "./EventList"
 import NavBar from "./NavBar";
+import AboutUs from "./AboutUs";
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -21,6 +22,7 @@ function App() {
   return (
    <div className="wrapper">
       <NavBar />
+      <div className="main">
       <Header />
       <EventList
          search={search} 
@@ -28,6 +30,8 @@ function App() {
          events={displayedEvents}
          />
       <NewEvent />
+      <AboutUs />
+      </div>
     </div>
   )
 }

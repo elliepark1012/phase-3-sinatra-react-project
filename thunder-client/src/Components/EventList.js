@@ -2,6 +2,15 @@ import React from "react";
 import EventListItem from "./EventListItem";
 
 function EventList({ events, search, onSearchChange }) {
+
+    const eventListItems = events.map((event) => {
+      return (
+        <EventListItem 
+          key={event.id}
+          event={event}
+        />
+      )
+    })
     return (
         <div className="events">
         <div className="search__container">
@@ -15,10 +24,7 @@ function EventList({ events, search, onSearchChange }) {
               onChange={e => onSearchChange(e.target.value)}
             />
           </div>
-        <div className="grid-eventlists">
-              {events.map((event) => 
-              <EventListItem key={event.id} event={event}/>)}
-        </div>
+          <ul className="cards">{eventListItems}</ul>
     </div>
     )
 }

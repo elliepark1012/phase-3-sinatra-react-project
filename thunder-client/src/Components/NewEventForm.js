@@ -1,7 +1,7 @@
 import { useState } from "react"; 
 import DateTimePicker from 'react-datetime-picker';
 
-function NewEvent() {
+function NewEvent( onAddEvent ) {
     const [time, setTime] = useState(new Date())
     const [category, setCategory] = useState("Technology")
     const [formData, setFormData] = useState({
@@ -36,10 +36,10 @@ function NewEvent() {
             body: JSON.stringify({...formData}),
         };
 
-        fetch("http://localhost:3000/", configObj)
+        fetch("http://localhost:9292/events", configObj)
          .then((resp) => resp.json())
-         .then((shop) => {
-            // onAddShop(shop);
+         .then((newEvent) => {
+            onAddEvent(newEvent);
             setFormData({
                 name:"",
                 time:time,

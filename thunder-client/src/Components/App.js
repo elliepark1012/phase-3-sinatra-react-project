@@ -15,6 +15,10 @@ function App() {
         .then((events) => setEvents(events));
     }, []);
 
+    function handleAddEvent(newEvent) {
+      setEvents([...events, newEvent]);
+    }
+
     const displayedEvents = events.filter((event) =>
     event.name.toLowerCase().includes(search.toLowerCase()) 
   );
@@ -29,7 +33,9 @@ function App() {
          onSearchChange={setSearch}
          events={displayedEvents}
          />
-      <NewEvent />
+      <NewEvent 
+        onAddEvent={handleAddEvent}
+      />
       <AboutUs />
       </div>
     </div>

@@ -1,13 +1,12 @@
 import { useState } from "react"; 
-import DateTimePicker from 'react-datetime-picker';
+import DatePicker from "react-datetime-picker";
+import 'react-datepicker/dist/react-datepicker.css';
 
 function NewEvent( onAddEvent ) {
-    const [time, setTime] = useState(new Date())
     const [category, setCategory] = useState("Technology")
     const [formData, setFormData] = useState({
         name:"",
         category: category,
-        time:time,
         location:"",
         about:""
     })
@@ -20,8 +19,9 @@ function NewEvent( onAddEvent ) {
     const handleCategory = (e) => {
         setCategory(e.target.value)
     }
+
     const handleClick = () => {
-        const welcome = "Thank you for becoming our partner"
+        const welcome = "Thank you for adding a new event!"
         alert(welcome)
     }
 
@@ -42,14 +42,12 @@ function NewEvent( onAddEvent ) {
             onAddEvent(newEvent);
             setFormData({
                 name:"",
-                time:time,
                 category:category,
                 location:"",
                 about:""
             });
          });
     };
-
 
     return (
         <div className="container">
@@ -96,9 +94,7 @@ function NewEvent( onAddEvent ) {
                     onChange={handleChange}
                     value={formData.about}
                 />
-                <DateTimePicker  
-                    onChange={setTime} 
-                    value={time} />   
+                <br></br> 
                 <button className="form-button" type="sumbmit" onClick={handleClick}> Add New Event</button>
         </form>
     </div>

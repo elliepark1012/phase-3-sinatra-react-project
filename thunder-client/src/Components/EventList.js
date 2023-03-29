@@ -1,20 +1,21 @@
 import React from "react";
 import EventListItem from "./EventListItem";
 
-function EventList({ events, search, onSearchChange }) {
+function EventList({ events, search, onSearchChange, onEventDelete }) {
 
     const eventListItems = events.map((event) => {
       return (
         <EventListItem 
           key={event.id}
           event={event}
+          onEventDelete={onEventDelete}
         />
       )
     })
     return (
         <div className="events">
         <div className="search__container">
-            <h3 className="search__title">Which event you want to join?</h3>
+            <h3 className="search__title">What's Going On Tonight?</h3>
             <input className="search__input"
               type="text"
               name="search"

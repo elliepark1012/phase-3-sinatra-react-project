@@ -5,19 +5,26 @@ function AboutUs() {
     return (
     <div className="aboutus">
         <img className="aboutus-image" src={logowb} alt />
-        <h1 className="aboutus-title"> Creative Writing</h1>
+        <h1 className="aboutus-title"> Stop planning ahead </h1>
         <p className="aboutus-p">
-      
-Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing.
-
-Tackle Writers' Block
-A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing block can often happen due to being stuck with a current project that the writer is trying to complete. By inserting a completely random paragraph from which to begin, it can take down some of the issues that may have been causing the writers' block in the first place.
-
-Beginning Writing Routine
-Another productive way to use this tool to begin a daily writing routine. One way is to generate a random paragraph with the intention to try to rewrite it while still keeping the original meaning. The purpose here is to just get the writing started so that when the writer goes onto their day's writing projects, words are already flowing from their fingers.
-
-Writing Challenge
-Another writing challenge can be to take the individual sentences in the random paragraph and incorporate a single sentence from that into a new paragraph to create a short story. Unlike the random sentence generator, the sentences from the random paragraph will have some connection to one another so it will be a bit different. You also won't know exactly how many sentences will appear in the random paragraph.
+            No.1 Application for the local communities. 
+            <br></br>
+            <br></br>
+            Find hobbies and friends with us and explore a new city!
+            <br></br>
+            <br></br>
+            Thunder is a mobile community flatform service where you can organize and 
+            join a variety of meetings depending on your interests. 
+            <br></br>
+            <br></br>
+            You can find work & life balance, and feel the small but real happiness with us.
+            We believe that when their are more communities, the world will be happier. 
+            <br></br>
+            <br></br>
+            <h2>No need to plan ahead, we update all the event happening at 7pm every day in nyc 
+            <br></br>feel free to join, feel free to leave 
+            <br></br>
+            <br></br><strong>No Pressure, No stress</strong></h2>
         </p>
     </div>
     )

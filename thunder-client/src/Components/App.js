@@ -19,6 +19,11 @@ function App() {
       setEvents([...events, newEvent]);
     }
 
+    function handleDeleteEvent(id) {
+      const updatedEvents = events.filter((event) => event.id !== id);
+      setEvents(updatedEvents)
+    }
+
     const displayedEvents = events.filter((event) =>
     event.name.toLowerCase().includes(search.toLowerCase()) 
   );
@@ -32,6 +37,7 @@ function App() {
          search={search} 
          onSearchChange={setSearch}
          events={displayedEvents}
+         onEventDelete={handleDeleteEvent}
          />
       <NewEvent 
         onAddEvent={handleAddEvent}

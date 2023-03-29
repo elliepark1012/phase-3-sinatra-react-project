@@ -1,6 +1,6 @@
 import { useState } from "react"; 
 
-function NewEvent( onAddActivity ) {
+function NewEventForm ( onAddActivity ) {
     const [category, setCategory] = useState("Technology")
     const [formData, setFormData] = useState({
         name:"",
@@ -35,7 +35,7 @@ function NewEvent( onAddActivity ) {
         };
 
         fetch("http://localhost:9292/events", configObj)
-         .then((resp) => resp.json())
+         .then((r) => r.json())
          .then((newActivity) => {
             onAddActivity(newActivity);
             setFormData({
@@ -99,4 +99,4 @@ function NewEvent( onAddActivity ) {
     )
 }
 
-export default NewEvent;
+export default NewEventForm;

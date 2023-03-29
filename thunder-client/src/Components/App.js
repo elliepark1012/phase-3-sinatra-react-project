@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import NewEvent from "./NewEventForm";
+import NewEventForm from "./NewEventForm";
 import EventList from "./EventList"
 import NavBar from "./NavBar";
 import AboutUs from "./AboutUs";
@@ -50,7 +50,7 @@ function App() {
          onActivityDelete={handleDeleteActivity}
          onActivityUpdate={handleUpdateActivity}
          />
-      <NewEvent 
+      <NewEventForm
         onAddActivity={handleAddActivity}
       />
       <AboutUs />

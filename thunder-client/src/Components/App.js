@@ -10,7 +10,7 @@ function App() {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-      fetch("http://localhost:4000/events")
+      fetch("http://localhost:9292/events")
         .then((r) => r.json())
         .then((events) => setEvents(events));
     }, []);

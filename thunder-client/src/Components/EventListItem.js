@@ -11,7 +11,7 @@ function EventListItem({ event, onEventDelete, onUpdateEvent }) {
 
     function handleUpdate(id) {
       onUpdateNumbers()
-      fetch(`http://localhost:4000/event/${id}`, {
+      fetch(`http://localhost:9292/event/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -25,7 +25,7 @@ function EventListItem({ event, onEventDelete, onUpdateEvent }) {
     }
 
     function handleDeleteClick(id) {
-      fetch(`http://localhost:4000/events/${id}`, {
+      fetch(`http://localhost:9292/events/${id}`, {
         method: "DELETE",
       });
 

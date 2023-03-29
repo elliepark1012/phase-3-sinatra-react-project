@@ -1,7 +1,7 @@
 import React from "react";
 import EventListItem from "./EventListItem";
 
-function EventList({ events, search, onSearchChange, onEventDelete }) {
+function EventList({ events, search, onSearchChange, onEventDelete, onUpdateEvent }) {
 
     const eventListItems = events.map((event) => {
       return (
@@ -9,6 +9,7 @@ function EventList({ events, search, onSearchChange, onEventDelete }) {
           key={event.id}
           event={event}
           onEventDelete={onEventDelete}
+          onUpdateEvent={onUpdateEvent}
         />
       )
     })

@@ -1,21 +1,31 @@
-function EventListItem({ event, onEventDelete }) {
+import { useState } from "react";
+
+function EventListItem({ event, onEventDelete, onUpdateEvent }) {
     const { name, location, about, image_url, participants } = event
+    const { newParticipants, setNewParticipants} = useState(participants)
 
-    // function handleParticipants (e) {
-    //   e.preventDefault();
+    function onUpdateNumbers(e){
+      e.preventDefault()
+      setNewParticipants(participants+1)
+    }
 
-    //   fetch(`http://localhost:9292/events/${id}`, {
-    //     method: "PATCH",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify
-    //     }
-    //   })
-    // }
+    function handleUpdate(id) {
+      onUpdateNumbers()
+      fetch(`http://localhost:4000/event/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          participants:newParticipants,
+        }),
+      })
+      .then((r) => r.json())
+      .then((updateEvent) => onUpdateEvent(updateEvent)); 
+    }
 
     function handleDeleteClick(id) {
-      fetch(`http://localhost:9292/events/${id}`, {
+      fetch(`http://localhost:4000/events/${id}`, {
         method: "DELETE",
       });
 
@@ -26,7 +36,7 @@ function EventListItem({ event, onEventDelete }) {
         <li className="card">
           <br></br>
           <br></br>
-          <button className="list-button" >Join</button>  
+          <button className="list-button" onClick={handleUpdate}>Join</button>  
           <button className="list-button" onClick={handleDeleteClick}>Next Time</button>
             <p className="card-text">Participants : {participants}</p>
           <img className="card-image" src={image_url} alt="image" />

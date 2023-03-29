@@ -4,8 +4,12 @@ function AboutUs() {
 
     return (
     <div className="aboutus">
-        <img className="aboutus-image" src={logowb} alt />
+        <img className="aboutus-image" src={logowb} alt="true" />
         <h1 className="aboutus-title"> Stop planning ahead </h1>
+        <h2>No need to plan ahead, we update all the event happening at 7pm every day in nyc 
+            <br></br>feel free to join, feel free to leave 
+            <br></br>
+            <br></br><strong>No Pressure, No stress</strong></h2>
         <p className="aboutus-p">
             No.1 Application for the local communities. 
             <br></br>
@@ -21,10 +25,7 @@ function AboutUs() {
             We believe that when their are more communities, the world will be happier. 
             <br></br>
             <br></br>
-            <h2>No need to plan ahead, we update all the event happening at 7pm every day in nyc 
-            <br></br>feel free to join, feel free to leave 
-            <br></br>
-            <br></br><strong>No Pressure, No stress</strong></h2>
+            
         </p>
     </div>
     )

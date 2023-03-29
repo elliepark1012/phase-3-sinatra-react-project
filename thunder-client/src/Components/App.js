@@ -10,7 +10,7 @@ function App() {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-      fetch("http://localhost:9292/events")
+      fetch("http://localhost:4000/events")
         .then((r) => r.json())
         .then((events) => setEvents(events));
     }, []);
@@ -24,6 +24,16 @@ function App() {
       setEvents(updatedEvents)
     }
 
+    function handleUpdateEvent(updateEventObj) {
+      const updateEvents = events.map((event) => {
+        if (MessageChannel.id === updateEventObj.id) {
+          return updateEventObj;
+        } else {
+          return event
+        }
+      });
+      setEvents(updateEvents)
+    }
     const displayedEvents = events.filter((event) =>
     event.name.toLowerCase().includes(search.toLowerCase()) 
   );
@@ -38,6 +48,7 @@ function App() {
          onSearchChange={setSearch}
          events={displayedEvents}
          onEventDelete={handleDeleteEvent}
+         onUpdateEvent={handleUpdateEvent}
          />
       <NewEvent 
         onAddEvent={handleAddEvent}

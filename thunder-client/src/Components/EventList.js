@@ -14,7 +14,7 @@ function EventList({ events, search, onSearchChange, onEventDelete, onUpdateEven
       )
     })
     return (
-        <div className="events">
+        <div className="events" id="allevents">
         <div className="search__container">
             <h3 className="search__title">What's Going On Tonight?</h3>
             <input className="search__input"

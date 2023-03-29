@@ -50,7 +50,7 @@ function NewEvent( onAddEvent ) {
     };
 
     return (
-        <div className="container">
+        <div className="container" id="newevent">
             <h1 className="form-title"> Create an Event </h1>
             <form 
                 className="form" 

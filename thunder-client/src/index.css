@@ -82,6 +82,11 @@ button {
   font-size: 25px;
 }
 
+a {
+  text-decoration: none;
+  color:inherit;
+}
+
 /* Header.js */
 
 .grid-header-box {

@@ -3,7 +3,7 @@ import logowb from "../logowb.png"
 function AboutUs() {
 
     return (
-    <div className="aboutus">
+    <div className="aboutus" id="aboutus">
         <img className="aboutus-image" src={logowb} alt="true" />
         <h1 className="aboutus-title"> Stop planning ahead </h1>
         <h2>No need to plan ahead, we update all the event happening at 7pm every day in nyc 

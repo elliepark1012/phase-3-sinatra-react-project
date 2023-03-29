@@ -6,36 +6,36 @@ import NavBar from "./NavBar";
 import AboutUs from "./AboutUs";
 
 function App() {
-    const [events, setEvents] = useState([]);
+    const [activities, setActivities] = useState([]);
     const [search, setSearch] = useState("");
 
     useEffect(() => {
       fetch("http://localhost:9292/events")
         .then((r) => r.json())
-        .then((events) => setEvents(events));
+        .then((activities) => setActivities(activities));
     }, []);
 
-    function handleAddEvent(newEvent) {
-      setEvents([...events, newEvent]);
+    function handleAddActivity(newActivities) {
+      setActivities([...activities, newActivities]);
     }
 
-    function handleDeleteEvent(id) {
-      const updatedEvents = events.filter((event) => event.id !== id);
-      setEvents(updatedEvents)
+    function handleDeleteActivity(id) {
+      const updatedActivities = activities.filter((activity) => activity.id !== id);
+      setActivities(updatedActivities)
     }
 
-    function handleUpdateEvent(updateEventObj) {
-      const updateEvents = events.map((event) => {
-        if (MessageChannel.id === updateEventObj.id) {
-          return updateEventObj;
+    function handleUpdateActivity(updateActivityObj) {
+      const updateActivities = activities.map((activity) => {
+        if (activity.id === updateActivityObj.id) {
+          return updateActivities;
         } else {
-          return event
+          return activity
         }
       });
-      setEvents(updateEvents)
+      setActivities(updateActivities)
     }
-    const displayedEvents = events.filter((event) =>
-    event.name.toLowerCase().includes(search.toLowerCase()) 
+    const displayedActivities = activities.filter((activity) =>
+    activity.name.toLowerCase().includes(search.toLowerCase()) 
   );
 
   return (
@@ -46,12 +46,12 @@ function App() {
       <EventList
          search={search} 
          onSearchChange={setSearch}
-         events={displayedEvents}
-         onEventDelete={handleDeleteEvent}
-         onUpdateEvent={handleUpdateEvent}
+         activities={displayedActivities}
+         onActivityDelete={handleDeleteActivity}
+         onActivityUpdate={handleUpdateActivity}
          />
       <NewEvent 
-        onAddEvent={handleAddEvent}
+        onAddActivity={handleAddActivity}
       />
       <AboutUs />
       </div>

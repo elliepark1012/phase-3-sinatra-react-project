@@ -1,35 +1,29 @@
 import { useState } from "react";
 
-function EventListItem({ event, onEventDelete, onUpdateEvent }) {
-    const { name, location, about, image_url, participants } = event
-    const { newParticipants, setNewParticipants} = useState(participants)
+function EventListItem({ activity, onActivityDelete, onActivityUpdate }) {
 
-    function onUpdateNumbers(e){
-      e.preventDefault()
-      setNewParticipants(participants+1)
-    }
+    const { name, location, about, image_url, participants, id } = activity
 
-    function handleUpdate(id) {
-      onUpdateNumbers()
-      fetch(`http://localhost:9292/event/${id}`, {
+    function handleUpdate() {
+      fetch(`http://localhost:9292/events/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          participants:newParticipants,
+          participants: participants + 1
         }),
       })
       .then((r) => r.json())
-      .then((updateEvent) => onUpdateEvent(updateEvent)); 
+      .then((updateActivity) => onActivityUpdate(updateActivity)); 
     }
 
-    function handleDeleteClick(id) {
+    function handleDeleteClick() {
       fetch(`http://localhost:9292/events/${id}`, {
         method: "DELETE",
       });
 
-      onEventDelete(id);
+      onActivityDelete(id);
     }
 
     return (

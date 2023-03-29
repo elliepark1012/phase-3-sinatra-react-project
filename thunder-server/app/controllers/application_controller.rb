@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/events" do
-    event = Events.create(
+    event = Event.create(
       name: params[:name],
       location: params[:location],
       image_url: params[:image_url],

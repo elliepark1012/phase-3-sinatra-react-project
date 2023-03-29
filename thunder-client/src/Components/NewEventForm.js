@@ -1,8 +1,6 @@
 import { useState } from "react"; 
-import DatePicker from "react-datetime-picker";
-import 'react-datepicker/dist/react-datepicker.css';
 
-function NewEvent( onAddEvent ) {
+function NewEvent( onAddActivity ) {
     const [category, setCategory] = useState("Technology")
     const [formData, setFormData] = useState({
         name:"",
@@ -38,8 +36,8 @@ function NewEvent( onAddEvent ) {
 
         fetch("http://localhost:9292/events", configObj)
          .then((resp) => resp.json())
-         .then((newEvent) => {
-            onAddEvent(newEvent);
+         .then((newActivity) => {
+            onAddActivity(newActivity);
             setFormData({
                 name:"",
                 category:category,

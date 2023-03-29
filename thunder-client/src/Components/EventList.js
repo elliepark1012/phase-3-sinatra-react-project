@@ -1,15 +1,20 @@
 import React from "react";
 import EventListItem from "./EventListItem";
 
-function EventList({ events, search, onSearchChange, onEventDelete, onUpdateEvent }) {
-
-    const eventListItems = events.map((event) => {
+function EventList(
+  { activities, 
+    search, 
+    onSearchChange, 
+    onActivityDelete, 
+    onActivityUpdate }) {
+ 
+    const eventListItems = activities.map((activity) => {
       return (
         <EventListItem 
-          key={event.id}
-          event={event}
-          onEventDelete={onEventDelete}
-          onUpdateEvent={onUpdateEvent}
+          key={activity.id}
+          activity={activity}
+          onActivityDelete={onActivityDelete}
+          onActivityUpdate={onActivityUpdate}
         />
       )
     })

@@ -14,5 +14,5 @@
 
 ## React Component Hierarchy 
 
-<img src="../thunder-client/src/components.png" />
+![Alt Components Diagram](./thunder-client/src/components.png?raw=true "Title")
 

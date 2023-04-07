@@ -13,6 +13,7 @@
 - `rake db:migrate`
 
 ## React Component Hierarchy 
-
 ![Alt Components Diagram](./thunder-client/src/components.png?raw=true "Title")
 
+## ORM (Object-Relational Mapping)
+![Alt ORM Diagram](./thunder-client/src/orm.png?raw=true "Title")

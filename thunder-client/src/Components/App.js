@@ -42,20 +42,23 @@ function App() {
       setCategories(updatedSub)
     }
 
-    
-    //   const categoryToUpdate = categories.find((category) => {
-    //     return category.id === deletedActivity.category_id;
-    // });
+    function handleUpdateActivity(updatedActivity) {
+      const updatedCategories = categories.map((category) => {
+        if (category.id === updatedActivity.category_id) {
+           const updatedActivities = category.activities.map((activity) =>
+            activity.id === updatedActivity.id 
+           )
+           return {
+            ...category, activities: updatedActivities
+           }
+        }
+          else {
+            return category;
+          }
+      })
+    setCategories(updatedCategories);
+}
 
-    //   const updatedActivity = categoryToUpdate.activities.filter((activity) => {
-    //     return activity.id !== deletedActivity.id;
-    //   });
-
-    //   categoryToUpdate.activities = updatedActivity;
-    //     setCategories(
-    //       categories.map((category) => (category.id === categoryToUpdate.id ? 
-    //         categoryToUpdate : category))
-    //     );
     function handleDeleteActivity(deletedActivity) {
           const updatedCategories = categories.map((category) => {
             if (category.id === deletedActivity.category_id) {
@@ -93,6 +96,7 @@ function App() {
          search={search} 
          onSearch={setSearch}
          handleDeleteActivity={handleDeleteActivity}
+         handleUpdateActivity={handleUpdateActivity}
          />
       
       <AboutUs />

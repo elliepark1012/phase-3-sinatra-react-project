@@ -8,7 +8,7 @@ const Categories = (
     search,
     onSearch,
     handleDeleteActivity,
-    activities,
+    handleUpdateActivity,
     addActivity
     }) =>  {
     const categoryList = categoriesToDisplay.map((category) => {
@@ -20,6 +20,7 @@ const Categories = (
           category={category}
           addActivity={addActivity}
           handleDeleteActivity={handleDeleteActivity}
+          handleUpdateActivity={handleUpdateActivity}
           handleUpdateSubscribes={handleUpdateSubscribes}
         />
        </div>

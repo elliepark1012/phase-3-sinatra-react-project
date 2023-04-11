@@ -5,7 +5,8 @@ const EachCategory = ({
   category,
   handleUpdateSubscribes,
   handleDeleteActivity,
-  addActivity
+  addActivity,
+  handleUpdateActivity
   }) => {
     const [displayActivity, setDisplayActivity] = useState(false);
 
@@ -39,6 +40,20 @@ const EachCategory = ({
         .then(() => handleDeleteActivity(activity));
     }
 
+    function updatedActivity(activity) {
+      const addParticipants = {
+        participants: activity.participants + 1,
+      };
+      fetch(`http://localhost:9292/activities/${activity.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" 
+        },
+        body: JSON.stringify(addParticipants), 
+        })
+        .then((r) => r.json())
+        .then(handleUpdateActivity);
+    }
+
     const eachActivity = category.activities?.map((activity) => (
           <li className="card" key={activity.id}>
            <img className="card-image" src={activity.image_url} alt="image" />
@@ -46,6 +61,7 @@ const EachCategory = ({
             <p className="card-text">Participants : {activity.participants}</p>
             <p className="card-text">Location: {activity.location}</p> 
             <p className="card-text">About: {activity.about}</p> 
+            <button className="list-button" onClick={() => updatedActivity(activity.id)}>I want to join!</button>
             <button className="list-button" onClick={() => deletedActivity(activity)}>I'm Not Interested</button>
           </li>
     ))

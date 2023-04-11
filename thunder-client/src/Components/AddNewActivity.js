@@ -3,7 +3,7 @@ import { useState } from "react";
 function AddNewActivity ( category , addActivity ) {
     const [newActivity, setNewActivity] = useState({
         name:"",
-        category: category,
+        category_id: category.id,
         location:"",
         about:""
     })
@@ -12,10 +12,6 @@ function AddNewActivity ( category , addActivity ) {
         const { name, value } = e.target;
         setNewActivity({...newActivity, [name]:value, });
     }
-
-    // const handleCategory = (e) => {
-    //     setCategories(e.target.value)
-    // }
 
     const handleClick = () => {
         const welcome = "Thank you for adding a new event!"
@@ -35,13 +31,13 @@ function AddNewActivity ( category , addActivity ) {
         const configObj = {
             method: "POST",
             headers: {
-                "Content-Type":"application/json",
+                "Content-Type": "application/json",
                 Accept: "application/json"
             },
             body: JSON.stringify(addNewActivity),
         };
 
-        fetch(`http://localhost:9292/categories/${category.id}/activities`, configObj)
+        fetch(`http://localhost:4000/categories/${category.id}/activities`, configObj)
          .then((r) => r.json())
          .then((data) => addActivity(data));
             setNewActivity({
@@ -68,19 +64,7 @@ function AddNewActivity ( category , addActivity ) {
                     onChange={handleChange}
                     value={newActivity.name}
                 />
-                      {/* <label htmlFor="Category">Category</label>
-                <select
-                    onChange={handleArea}
-                    value={category}
-                >
-                    <option value="Dancing">Dancing</option>
-                    <option value="Yoga & Pilates">Yoga & Pilates</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Running">Running</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Socializing">Socializing</option>
-                    <option value="Music">Music</option>
-                </select> */}
+                
                 <label htmlFor="location">Location</label>
                 <input 
                     type="text"

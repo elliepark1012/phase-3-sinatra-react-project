@@ -35,15 +35,11 @@ function App() {
       setActivities(updatedActivities);
     }
 
-    function handleUpdateActivity(updateActivityObj) {
-      const updateActivities = activities.map((activity) => {
-        if (activity.id === updateActivityObj.id) {
-          return updateActivityObj;
-        } else {
-          return activity
-        }
+    function handleUpdateSubscribes(updateSubscribes) {
+      const updatedSub = categories.map((category) => {
+       return category.id === updateSubscribes.id ? updateSubscribes : categories;
       });
-      setActivities(updateActivities)
+      setCategories(updatedSub)
     }
 
     function handleDeleteActivity(deletedActivity) {
@@ -63,7 +59,7 @@ function App() {
         setActivities(updatedActivity);
     }
         
-    const categoryToDisplay = categories.filter((category) =>
+    const categoriesToDisplay = categories.filter((category) =>
     category.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
@@ -72,16 +68,16 @@ function App() {
       <div className="main">
       <Header />
       <Categories
-         handleUpdateActivity={handleUpdateActivity}
+         handleUpdateSubscribes={handleUpdateSubscribes}
          addActivity={addActivity}
          categories={categories}
-         categoryToDisplay={categoryToDisplay}
+         categoriesToDisplay={categoriesToDisplay}
          search={search} 
          onSearch={setSearch}
          handleDeleteActivity={handleDeleteActivity}
          activities={activities}
          />
-      <AddNewCategory
+      <AddNewCategory 
         addCategories={addCategories}
       />
       <AboutUs />

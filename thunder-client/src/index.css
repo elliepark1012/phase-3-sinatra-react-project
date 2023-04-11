@@ -136,7 +136,7 @@ a {
 }
 
 /* Eventlist.js */
-.search__container {
+/* .search__container {
     display: grid;
     align-items: center;
     text-align: center;
@@ -162,10 +162,10 @@ a {
   color: #101357;
   font-size: 25px;
   text-align: center;
-} 
+}  */
 
 /* EventListItem.js */
-.cards {
+/* .cards {
   margin-top: 200px;
   min-height: 100%;
   display: flex;
@@ -226,10 +226,10 @@ a {
   background-color: var(--c1);
   font-family: 'Times New Roman', Times, serif;
   font-weight: 600;
-}
+} */
 
 /* NewEventForm.js */
- .container {
+ /* .container {
     width: 100%;
     background: rgba(0, 0, 0);
     font-weight: 800;
@@ -300,10 +300,10 @@ select {
     border-radius: 10px;
     color: var(--c1);
     background: var(--c2);
-} 
+}  */
 
 /* AboutUS.js */
-.aboutus {
+/* .aboutus {
   margin-top: 300px;
   margin-bottom: 150px;
   margin-left: 200px;
@@ -330,4 +330,4 @@ select {
   margin-right: 200px;
   font-size: 25px;
   padding-bottom: 140px;
-}
+} */

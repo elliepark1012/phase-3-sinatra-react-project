@@ -2,13 +2,13 @@ puts "🌱 Seeding spices..."
 
 # Seed your database here
 
-Category.create(name: "Dancing", update_at: Faker::Date.in_date_period(month: 2))
-Category.create(name: "Yoga & Filates", update_at: Faker::Date.in_date_period(month: 2))
-Category.create(name: "Sports", update_at: Faker::Date.in_date_period(month: 2))
-Category.create(name: "Running", update_at: Faker::Date.in_date_period(month: 2))
-Category.create(name: "Technology", update_at: Faker::Date.in_date_period(month: 2))
-Category.create(name: "Socializing", update_at: Faker::Date.in_date_period(month: 2))
-Category.create(name: "Music", update_at: Faker::Date.in_date_period(month: 2))
+Category.create(name: "Dancing", update_at: Faker::Date.in_date_period(month: 2), subscribe: 39)
+Category.create(name: "Yoga & Filates", update_at: Faker::Date.in_date_period(month: 2), subscribe: 30)
+Category.create(name: "Sports", update_at: Faker::Date.in_date_period(month: 2), subscribe: 11)
+Category.create(name: "Running", update_at: Faker::Date.in_date_period(month: 2), subscribe: 209)
+Category.create(name: "Technology", update_at: Faker::Date.in_date_period(month: 2), subscribe: 31)
+Category.create(name: "Socializing", update_at: Faker::Date.in_date_period(month: 2), subscribe: 48)
+Category.create(name: "Music", update_at: Faker::Date.in_date_period(month: 2), subscribe: 67)
 
 Activity.create(name: "Argentine Tango", 
             location: "Ukrainian East Village Restaurant",

@@ -1,7 +1,10 @@
 import { useState } from "react"; 
 
 function AddNewCategory ( { addCategories }) {
-    const [newCategory, setNewCategory] = useState({name: ""});
+    const [newCategory, setNewCategory] = useState({
+        name: "",
+        subscribe: 0
+    });
 
     function handleChange (e) {
         const name = e.target.name;
@@ -14,6 +17,7 @@ function AddNewCategory ( { addCategories }) {
 
         const addNewCategory = {
         name: newCategory.name,
+        subscribe: 0,
     };
 
     fetch(`http://localhost:9292/categories`, {
@@ -26,7 +30,8 @@ function AddNewCategory ( { addCategories }) {
     .then((r) => r.json())
     .then(addCategories);
     setNewCategory({
-        name:""
+        name:"",
+        subscribe: 0,
         });
     }
 return (

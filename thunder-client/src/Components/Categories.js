@@ -1,43 +1,33 @@
-import React from "react";
 import EachCategory from "./EachCategory"
+import Search from "./Search";
 
-function Categories(
-  { handleUpdateActivity,
-    categoryToDisplay,
+const Categories = (
+  { handleUpdateSubscribes,
+    categoriesToDisplay,
     search,
-    onSearchChange,
+    onSearch,
     handleDeleteActivity,
     activities,
     addActivity
-    }) 
-  {
-    const categoryList = categoryToDisplay.map((category) => {
+    }) =>  {
+    const categoryList = categoriesToDisplay.map((category) => {
       return (
         <EachCategory
           key={category.id}
           category={category}
           addActivity={addActivity}
           handleDeleteActivity={handleDeleteActivity}
-          handleUpdateActivity={handleUpdateActivity}
+          handleUpdateSubscribes={handleUpdateSubscribes}
           activities={activities}
         />
       )
     })
     return (
-        <div className="events" id="allevents">
-        <div className="search__container">
-            <h3 className="search__title">Search Search Search!</h3>
-            <input className="search__input"
-              type="text"
-              name="search"
-              placeholder="Search"
-              autoComplete="off"
-              value={search}
-              onChange={e => onSearchChange(e.target.value)}
-            />
-          </div>
+      <div className="events" id="allevents">
+          <Search search={search} onSearch={onSearch}
+          />
           <ul className="cards">{categoryList}</ul>
-    </div>
+      </div>
     )
 }
 

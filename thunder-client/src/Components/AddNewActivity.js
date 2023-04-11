@@ -1,6 +1,6 @@
 import { useState } from "react"; 
 
-function AddNewActivity ( category , addActivity ) {
+function AddNewActivity ( {category , addActivity} ) {
     const [newActivity, setNewActivity] = useState({
         name:"",
         category_id: category.id,
@@ -21,12 +21,12 @@ function AddNewActivity ( category , addActivity ) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const addNewActivity = {
-            name: newActivity.name,
-            category_id: newActivity.category_id,
-            location: newActivity.location,
-            about: newActivity.about
-        }
+        // const addNewActivity = {
+        //     name: newActivity.name,
+        //     category_id: newActivity.category_id,
+        //     location: newActivity.location,
+        //     about: newActivity.about
+        // }
 
         const configObj = {
             method: "POST",
@@ -34,7 +34,7 @@ function AddNewActivity ( category , addActivity ) {
                 "Content-Type": "application/json",
                 Accept: "application/json"
             },
-            body: JSON.stringify(addNewActivity),
+            body: JSON.stringify(newActivity),
         };
 
         fetch(`http://localhost:9292/categories/${category.id}/activities`, configObj)

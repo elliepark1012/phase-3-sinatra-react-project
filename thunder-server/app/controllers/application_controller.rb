@@ -11,13 +11,13 @@ class ApplicationController < Sinatra::Base
   #create a new category 
   post "/categories" do
     new_category = Category.create(name: params[:name])
-    new_category.to_json
+    new_category.to_json(include: :activities)
   end 
   
   #create a new activity 
   post "/categories/:category_id/activities" do
     category = Category.find_by(id: params[:category_id])
-    new_activity = category.activitys.create(activity_params)
+    new_activity = category.activities.create(activity_params)
     new_activity.to_json(include: :category)
   end
 
@@ -27,7 +27,8 @@ class ApplicationController < Sinatra::Base
     category.update(subscribe: params[:subscribe])
     category.to_json
   end
-
+  
+  
   #delete activities  
   delete "/activities/:id" do
     activity = Activity.find(params[:id])

@@ -42,21 +42,35 @@ function App() {
       setCategories(updatedSub)
     }
 
+    
+    //   const categoryToUpdate = categories.find((category) => {
+    //     return category.id === deletedActivity.category_id;
+    // });
+
+    //   const updatedActivity = categoryToUpdate.activities.filter((activity) => {
+    //     return activity.id !== deletedActivity.id;
+    //   });
+
+    //   categoryToUpdate.activities = updatedActivity;
+    //     setCategories(
+    //       categories.map((category) => (category.id === categoryToUpdate.id ? 
+    //         categoryToUpdate : category))
+    //     );
     function handleDeleteActivity(deletedActivity) {
-      const categoryToUpdate = categories.find((category) => {
-        return category.id === deletedActivity.category_id;
-    });
-
-      const updatedActivity = categoryToUpdate.activities.filter((activity) => {
-        return activity.id !== deletedActivity.id;
-      });
-
-      categoryToUpdate.activities = updatedActivity;
-        setCategories(
-          categories.map((category) => (category.id === categoryToUpdate.id ? 
-            categoryToUpdate : category))
-        );
-        setActivities(updatedActivity);
+          const updatedCategories = categories.map((category) => {
+            if (category.id === deletedActivity.category_id) {
+               const updatedActivities = category.activities.filter((activity) =>
+                activity.id !== deletedActivity.id 
+               )
+               return {
+                ...category, activities: updatedActivities
+               }
+            }
+              else {
+                return category;
+              }
+          })
+        setCategories(updatedCategories);
     }
         
     const categoriesToDisplay = categories.filter((category) => {
@@ -79,7 +93,6 @@ function App() {
          search={search} 
          onSearch={setSearch}
          handleDeleteActivity={handleDeleteActivity}
-         activities={activities}
          />
       
       <AboutUs />

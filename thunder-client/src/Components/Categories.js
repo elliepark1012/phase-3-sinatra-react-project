@@ -13,7 +13,7 @@ const Categories = (
     }) =>  {
     const categoryList = categoriesToDisplay.map((category) => {
       return (
-        <div className="category_box" id={category.id}>
+        <div className="category_box" key={category.id}>
         <img className="click" src={click} alt="categories"/>
         <EachCategory
           key={category.id}
@@ -21,7 +21,6 @@ const Categories = (
           addActivity={addActivity}
           handleDeleteActivity={handleDeleteActivity}
           handleUpdateSubscribes={handleUpdateSubscribes}
-          activities={activities}
         />
        </div>
       )

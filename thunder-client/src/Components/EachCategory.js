@@ -30,13 +30,13 @@ const EachCategory = ({
         .then(handleUpdateSubscribes);
     }
 
-    function deletedActivity(id) {
-      fetch(`http://localhost:9292/activities/${id}`, {
+    function deletedActivity(activity) {
+      fetch(`http://localhost:9292/activities/${activity.id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       })
         .then((r) => r.json())
-        .then((data) => handleDeleteActivity(data));
+        .then(() => handleDeleteActivity(activity));
     }
 
     const eachActivity = category.activities?.map((activity) => (
@@ -46,7 +46,7 @@ const EachCategory = ({
             <p className="card-text">Participants : {activity.participants}</p>
             <p className="card-text">Location: {activity.location}</p> 
             <p className="card-text">About: {activity.about}</p> 
-            <button className="list-button" onClick={deletedActivity}>I'm Not Interested</button>
+            <button className="list-button" onClick={() => deletedActivity(activity)}>I'm Not Interested</button>
           </li>
     ))
 

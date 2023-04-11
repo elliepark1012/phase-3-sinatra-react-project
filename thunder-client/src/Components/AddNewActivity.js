@@ -1,8 +1,7 @@
 import { useState } from "react"; 
 
-function NewEventForm ( onAddActivity ) {
-    const [category, setCategory] = useState("Technology")
-    const [formData, setFormData] = useState({
+function AddNewActivity ( category , addActivity ) {
+    const [newActivity, setNewActivity] = useState({
         name:"",
         category: category,
         location:"",
@@ -11,12 +10,12 @@ function NewEventForm ( onAddActivity ) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((formData) => ({...formData, [name]:value, }));
+        setNewActivity({...newActivity, [name]:value, });
     }
 
-    const handleCategory = (e) => {
-        setCategory(e.target.value)
-    }
+    // const handleCategory = (e) => {
+    //     setCategories(e.target.value)
+    // }
 
     const handleClick = () => {
         const welcome = "Thank you for adding a new event!"
@@ -25,26 +24,32 @@ function NewEventForm ( onAddActivity ) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const addNewActivity = {
+            name: newActivity.name,
+            category_id: newActivity.category_id,
+            location: newActivity.location,
+            about: newActivity.about
+        }
+
         const configObj = {
             method: "POST",
             headers: {
                 "Content-Type":"application/json",
                 Accept: "application/json"
             },
-            body: JSON.stringify({...formData}),
+            body: JSON.stringify(addNewActivity),
         };
 
-        fetch("http://localhost:9292/events", configObj)
+        fetch(`http://localhost:9292/categories/${category.id}/activities`, configObj)
          .then((r) => r.json())
-         .then((newActivity) => {
-            onAddActivity(newActivity);
-            setFormData({
+         .then((data) => addActivity(data));
+            setNewActivity({
                 name:"",
-                category:category,
+                category_id: newActivity.category_id,
                 location:"",
                 about:""
             });
-         });
     };
 
     return (
@@ -61,11 +66,11 @@ function NewEventForm ( onAddActivity ) {
                     id="name"
                     name="name"
                     onChange={handleChange}
-                    value={formData.name}
+                    value={newActivity.name}
                 />
-                      <label htmlFor="Category">Category</label>
+                      {/* <label htmlFor="Category">Category</label>
                 <select
-                    onChange={handleCategory}
+                    onChange={handleArea}
                     value={category}
                 >
                     <option value="Dancing">Dancing</option>
@@ -75,14 +80,14 @@ function NewEventForm ( onAddActivity ) {
                     <option value="Technology">Technology</option>
                     <option value="Socializing">Socializing</option>
                     <option value="Music">Music</option>
-                </select>
+                </select> */}
                 <label htmlFor="location">Location</label>
                 <input 
                     type="text"
                     id="location"
                     name="location"
                     onChange={handleChange}
-                    value={formData.location}
+                    value={newActivity.location}
                 />
                  <label htmlFor="about">About</label>
                 <input 
@@ -90,7 +95,7 @@ function NewEventForm ( onAddActivity ) {
                     id="about"
                     name="about"
                     onChange={handleChange}
-                    value={formData.about}
+                    value={newActivity.about}
                 />
                 <br></br> 
                 <button className="form-button" type="sumbmit" onClick={handleClick}> Add New Event</button>
@@ -99,4 +104,4 @@ function NewEventForm ( onAddActivity ) {
     )
 }
 
-export default NewEventForm;
+export default AddNewActivity;

@@ -1,57 +1,88 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import NewEventForm from "./NewEventForm";
-import EventList from "./EventList"
+import AddNewCategory from "./AddNewCategory"
+import Categories from "./Categories"
 import NavBar from "./NavBar";
 import AboutUs from "./AboutUs";
 
 function App() {
-    const [activities, setActivities] = useState([]);
-    const [search, setSearch] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [search, setSearch] = useState("");
 
     useEffect(() => {
-      fetch("http://localhost:9292/events")
+      fetch("http://localhost:9292/categories")
         .then((r) => r.json())
-        .then((activities) => setActivities(activities));
+        .then((data) => setCategories(data));
     }, []);
 
-    function handleAddActivity(newActivities) {
-      setActivities([...activities, newActivities]);
+    function addCategories(newCategory) {
+      const updatedCategories = [newCategory, ...categories];
+      setCategories(updatedCategories);
     }
 
-    function handleDeleteActivity(id) {
-      const updatedActivities = activities.filter((activity) => activity.id !== id);
-      setActivities(updatedActivities)
+    function addActivity(newActivity){
+      const categoryToUpdate = categories.find((category) => {
+        return category.id === newActivity.category_id;
+      });
+
+      const updatedActivities = [newActivity, ...categoryToUpdate.activities];
+      categoryToUpdate.activities = updatedActivities;
+      setCategories(
+        categories.map((category) => (category.id === categoryToUpdate.id? 
+          categoryToUpdate : category))
+      )
+      setActivities(updatedActivities);
     }
 
     function handleUpdateActivity(updateActivityObj) {
       const updateActivities = activities.map((activity) => {
         if (activity.id === updateActivityObj.id) {
-          return updateActivities;
+          return updateActivityObj;
         } else {
           return activity
         }
       });
       setActivities(updateActivities)
     }
-    const displayedActivities = activities.filter((activity) =>
-    activity.name.toLowerCase().includes(search.toLowerCase()) 
-  );
+
+    function handleDeleteActivity(deletedActivity) {
+      const categoryToUpdate = categories.find((category) => {
+        return category.id === deletedActivity.category_id;
+    });
+
+      const updatedActivity = categoryToUpdate.activities.filter((activity) => {
+        return activity.id !== deletedActivity.id;
+      });
+
+      categoryToUpdate.activities = updatedActivity;
+        setCategories(
+          categories.map((category) => (category.id === categoryToUpdate.id ? 
+            categoryToUpdate : category))
+        );
+        setActivities(updatedActivity);
+    }
+        
+    const categoryToDisplay = categories.filter((category) =>
+    category.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
    <div className="wrapper">
       <NavBar />
       <div className="main">
       <Header />
-      <EventList
+      <Categories
+         handleUpdateActivity={handleUpdateActivity}
+         addActivity={addActivity}
+         categories={categories}
+         categoryToDisplay={categoryToDisplay}
          search={search} 
-         onSearchChange={setSearch}
-         activities={displayedActivities}
-         onActivityDelete={handleDeleteActivity}
-         onActivityUpdate={handleUpdateActivity}
+         onSearch={setSearch}
+         handleDeleteActivity={handleDeleteActivity}
+         activities={activities}
          />
-      <NewEventForm
-        onAddActivity={handleAddActivity}
+      <AddNewCategory
+        addCategories={addCategories}
       />
       <AboutUs />
       </div>

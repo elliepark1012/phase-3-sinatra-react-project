@@ -3,31 +3,49 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   
-  get "/events" do 
-    events = Event.all.order(:created_at)    
-    events.to_json
+  get "/categories" do 
+    categories = Category.all  
+    categories.to_json(include: :activities)
   end
 
-  post "/events" do
-    event = Event.create(
-      name: params[:name],
-      location: params[:location],
-      image_url: params[:image_url],
-      participants: params[:participants],
-      about: params[:about],
-      category_id: params[:category_id])
-    event.to_json
+  #create a new category 
+  post "/categories" do
+    new_category = Category.create(name: params[:name])
+    new_category.to_json
+  end 
+  
+  #create a new activity 
+  post "/categories/:category_id/activities" do
+    category = Category.find_by(id: params[:category_id])
+    new_activity = category.activitys.create(activity_params)
+    new_activity.to_json(include: :category)
   end
 
-  patch "/events/:id" do
-    event = Event.find(params[:id])
-    event.update(participants: params[:participants])
-    event.to_json
+  #update activities participants 
+  patch "/activities/:id" do
+    activity = Activity.find(params[:id])
+    activity.update(participants: params[:participants])
+    activity.to_json
   end
 
-  delete "/events/:id" do
-    event = Event.find(params[:id])
-    event.destroy
-    event.to_json
+  #delete activities  
+  delete "/activities/:id" do
+    activity = Activity.find(params[:id])
+    activity.destroy
+    activity.to_json
   end
+
+  private 
+
+  def activity_params 
+    {
+    name: params[:name],
+    location: params[:location],
+    image_url: params[:image_url],
+    participants: params[:participants],
+    about: params[:about],
+    category_id: params[:category_id]
+    }
+end 
+
 end 

@@ -1,6 +1,12 @@
-import { useState } from "react";
+import AddNewActivity from "./AddNewActivity";
 
-function EventListItem({ activity, onActivityDelete, onActivityUpdate }) {
+function EachCategory({ 
+  category,
+  handleUpdateActivity,
+  handleDeleteActivity,
+  activity,
+  addActivity
+  }) {
 
     const { name, location, about, image_url, participants, id } = activity
 
@@ -15,7 +21,7 @@ function EventListItem({ activity, onActivityDelete, onActivityUpdate }) {
         }),
       })
       .then((r) => r.json())
-      .then((updateActivity) => onActivityUpdate(updateActivity)); 
+      .then((updateActivity) => handleUpdateActivity(updateActivity)); 
     }
 
     function handleDeleteClick() {
@@ -23,7 +29,7 @@ function EventListItem({ activity, onActivityDelete, onActivityUpdate }) {
         method: "DELETE",
       });
 
-      onActivityDelete(id);
+     handleDeleteActivity(id);
     }
 
     return (
@@ -37,8 +43,9 @@ function EventListItem({ activity, onActivityDelete, onActivityUpdate }) {
             <h1 className="card-name">{name}</h1> 
             <p className="card-text">Location: {location}</p> 
             <p className="card-text">About: {about}</p> 
+          <AddNewActivity category={category} addActivity={addActivity}/>
         </li>
     )
 }
 
-export default EventListItem
+export default EachCategory;

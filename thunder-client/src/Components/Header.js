@@ -13,7 +13,7 @@ document.onmousemove = e => handleMove(e);
 document.ontouchmove = e => handleMove(e.touches[0]);
 
 return (
-  <div className="grid-header-box" style={{width:width}} >
+  <div className="grid-header-box" style={{width:width}} id="home">
     <div id="left-side" className="side">
       <h2 className="title">
         Every gathering 

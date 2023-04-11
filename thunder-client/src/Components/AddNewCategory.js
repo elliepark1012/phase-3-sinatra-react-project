@@ -35,17 +35,18 @@ function AddNewCategory ( { addCategories }) {
         });
     }
 return (
-    <div>
-        <form className="" onSubmit={handleSubmit}>
-         <h4> Add New Categories Here: </h4>
+    <div className="field">
+        <form className="category_form" onSubmit={handleSubmit}>
+         <h4 className="cf_title"> Add New Categories Here: </h4>
             <input
+                className="cf_input"
                 type="text"
-                placeholder="Category"
+                placeholder="New Category"
                 name="name"
                 value={newCategory.name}
                 onChange={handleChange}
             ></input>
-            <input className="button" type="submit" />
+            <input className="cf_button" type="submit" />
         </form>
     </div>
 )

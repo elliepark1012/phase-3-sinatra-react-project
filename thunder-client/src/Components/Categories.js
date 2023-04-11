@@ -1,5 +1,6 @@
 import EachCategory from "./EachCategory"
 import Search from "./Search";
+import click from "../click.png"
 
 const Categories = (
   { handleUpdateSubscribes,
@@ -12,6 +13,8 @@ const Categories = (
     }) =>  {
     const categoryList = categoriesToDisplay.map((category) => {
       return (
+        <div className="category_box" id={category.id}>
+        <img className="click" src={click} alt="categories"/>
         <EachCategory
           key={category.id}
           category={category}
@@ -20,13 +23,14 @@ const Categories = (
           handleUpdateSubscribes={handleUpdateSubscribes}
           activities={activities}
         />
+       </div>
       )
     })
     return (
-      <div className="events" id="allevents">
+      <div className="events" id="categories">
           <Search search={search} onSearch={onSearch}
           />
-          <ul className="cards">{categoryList}</ul>
+          <ul className="category">{categoryList}</ul>
       </div>
     )
 }

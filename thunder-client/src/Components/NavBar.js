@@ -7,8 +7,8 @@ function NavBar() {
             <nav>
                 <ul className="nav-area">
                     <li><a href="#aboutus">About Us</a></li>
-                    <li><a href="#allevents">All Events</a></li>
-                    <button> <li><a href="#newevent">Create An Event</a></li> </button>
+                    <li><a href="#categories">Categories</a></li>
+                    <button> <li><a href="home">Home</a></li> </button>
                 </ul>
             </nav>
         </div>

@@ -60,7 +60,7 @@ function App() {
     }
         
     const categoriesToDisplay = categories.filter((category) => {
-    category.name.toLowerCase().includes(search.toLowerCase());
+      return category.name.toUpperCase().includes(search.toUpperCase());
     });
     
   return (
@@ -68,6 +68,9 @@ function App() {
       <NavBar />
       <div className="main">
       <Header />
+      <AddNewCategory 
+        addCategories={addCategories}
+      />
       <Categories
          handleUpdateSubscribes={handleUpdateSubscribes}
          addActivity={addActivity}
@@ -78,9 +81,7 @@ function App() {
          handleDeleteActivity={handleDeleteActivity}
          activities={activities}
          />
-      <AddNewCategory 
-        addCategories={addCategories}
-      />
+      
       <AboutUs />
       </div>
     </div>

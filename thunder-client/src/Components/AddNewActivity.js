@@ -37,7 +37,7 @@ function AddNewActivity ( category , addActivity ) {
             body: JSON.stringify(addNewActivity),
         };
 
-        fetch(`http://localhost:4000/categories/${category.id}/activities`, configObj)
+        fetch(`http://localhost:9292/categories/${category.id}/activities`, configObj)
          .then((r) => r.json())
          .then((data) => addActivity(data));
             setNewActivity({
@@ -49,15 +49,15 @@ function AddNewActivity ( category , addActivity ) {
     };
 
     return (
-        <div className="container" id="newevent">
+        <div className="container">
             <h1 className="form-title"> Create an Event </h1>
-            <form 
-                className="form" 
+            <form className="activity_form"
                 autoComplete="off" 
                 onSubmit={handleSubmit}
             >
                 <label htmlFor="name">Name</label>
                 <input 
+                    className="form_input"
                     type="text"
                     id="name"
                     name="name"
@@ -67,6 +67,7 @@ function AddNewActivity ( category , addActivity ) {
                 
                 <label htmlFor="location">Location</label>
                 <input 
+                    className="form_input"
                     type="text"
                     id="location"
                     name="location"
@@ -75,6 +76,7 @@ function AddNewActivity ( category , addActivity ) {
                 />
                  <label htmlFor="about">About</label>
                 <input 
+                    className="form_input"
                     type="text"
                     id="about"
                     name="about"

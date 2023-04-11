@@ -59,9 +59,10 @@ function App() {
         setActivities(updatedActivity);
     }
         
-    const categoriesToDisplay = categories.filter((category) =>
-    category.name.toLowerCase().includes(search.toLowerCase()));
-
+    const categoriesToDisplay = categories.filter((category) => {
+    category.name.toLowerCase().includes(search.toLowerCase());
+    });
+    
   return (
    <div className="wrapper">
       <NavBar />

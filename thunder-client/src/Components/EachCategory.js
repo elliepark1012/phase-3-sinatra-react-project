@@ -62,8 +62,12 @@ const EachCategory = ({
         <button className="button" onClick={showActivity}>
         {displayActivity ? "Hide Activities" : "Show Activities"}
         </button>
-        {displayActivity ? <ul>{eachActivity}</ul> : null}
-        <AddNewActivity category={category} addActivity={addActivity} />
+        {displayActivity ? 
+          <div>
+          <ul>{eachActivity}</ul> 
+          <AddNewActivity category={category} addActivity={addActivity} />
+          </div>
+          : null}
       </div>
     )
 }

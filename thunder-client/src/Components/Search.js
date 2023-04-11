@@ -3,7 +3,7 @@ import React from "react";
 const Search = ({ search, onSearch }) => {
     return (
         <div className="search__container">
-            <h3 className="search__title">Search Search Search!</h3>
+            <h3 className="search__title">T Y P E <br></br>C A T E G O R I E S </h3>
             <input className="search__input"
                  type="text"
                  name="search"

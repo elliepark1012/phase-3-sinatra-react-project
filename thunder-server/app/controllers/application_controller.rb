@@ -21,11 +21,11 @@ class ApplicationController < Sinatra::Base
     new_activity.to_json(include: :category)
   end
 
-  #update activities participants 
-  patch "/activities/:id" do
-    activity = Activity.find(params[:id])
-    activity.update(participants: params[:participants])
-    activity.to_json
+  #update category's subscribes 
+  patch "/categories/:id" do
+    category = Category.find(params[:id])
+    category.update(subscribe: params[:subscribe])
+    category.to_json
   end
 
   #delete activities  

@@ -23,9 +23,9 @@ class ApplicationController < Sinatra::Base
 
   #update category's subscribes 
   patch "/categories/:id" do
-    category = Category.find(params[:id])
+    category = Category.find_by(id: params[:id])
     category.update(subscribe: params[:subscribe])
-    category.to_json(include: :category)
+    category.to_json(include: :activities)
   end
   
   patch "/activities/:id" do 

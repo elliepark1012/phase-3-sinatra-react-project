@@ -37,7 +37,7 @@ function App() {
 
     function handleUpdateSubscribes(updateSubscribes) {
       const updatedSub = categories.map((category) => {
-       return category.id === updateSubscribes.id ? updateSubscribes : categories;
+       return category.id === updateSubscribes.id ? updateSubscribes : category;
       });
       setCategories(updatedSub)
     }
@@ -45,16 +45,19 @@ function App() {
     function handleUpdateActivity(updatedActivity) {
       const updatedCategories = categories.map((category) => {
         if (category.id === updatedActivity.category_id) {
-           const updatedActivities = category.activities.map((activity) =>
-            activity.id === updatedActivity.id 
-           )
+           const updatedActivities = category.activities.map((activityObj) => {
+              if (activityObj.id === updatedActivity.id) {
+                  return updatedActivity
+                  } else {
+                  return activityObj
+                }})
            return {
             ...category, activities: updatedActivities
            }
         }
           else {
             return category;
-          }
+        }
       })
     setCategories(updatedCategories);
 }

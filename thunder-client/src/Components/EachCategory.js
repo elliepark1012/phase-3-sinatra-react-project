@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddNewActivity from "./AddNewActivity";
+import EachActivity from "./EachActivity"
 
 const EachCategory = ({ 
   category,
@@ -16,42 +17,21 @@ const EachCategory = ({
     };
 
     function updateSubscribes() {
-      const addSubscribes = {
-        subscribe: category.subscribe + 1,
-      };
+      // const addSubscribes = {
+      //   subscribe: category.subscribe + 1,
+      // };
   
       fetch(`http://localhost:9292/categories/${category.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(addSubscribes),
+        body: JSON.stringify({
+          subscribe: category.subscribe + 1,
+        }),
       })
         .then((response) => response.json())
         .then(handleUpdateSubscribes);
-    }
-
-    function deletedActivity(activity) {
-      fetch(`http://localhost:9292/activities/${activity.id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      })
-        .then((r) => r.json())
-        .then(() => handleDeleteActivity(activity));
-    }
-
-    function updatedActivity(activity) {
-      const addParticipants = {
-        participants: activity.participants + 1,
-      };
-      fetch(`http://localhost:9292/activities/${activity.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" 
-        },
-        body: JSON.stringify(addParticipants), 
-        })
-        .then((r) => r.json())
-        .then(handleUpdateActivity);
     }
 
     const eachActivity = category.activities?.map((activity) => (
@@ -61,8 +41,11 @@ const EachCategory = ({
             <p className="card-text">Participants : {activity.participants}</p>
             <p className="card-text">Location: {activity.location}</p> 
             <p className="card-text">About: {activity.about}</p> 
-            <button className="list-button" onClick={() => updatedActivity(activity.id)}>I want to join!</button>
-            <button className="list-button" onClick={() => deletedActivity(activity)}>I'm Not Interested</button>
+            <EachActivity   
+                handleDeleteActivity={handleDeleteActivity}
+                handleUpdateActivity={handleUpdateActivity}
+                activity={activity}
+                />
           </li>
     ))
 
@@ -80,8 +63,7 @@ const EachCategory = ({
 
         {displayActivity ? 
           <div>
-          
-          <ul>{eachActivity}</ul> 
+          <ul>{eachActivity}  </ul> 
           <AddNewActivity category={category} addActivity={addActivity}/>
           </div>
           : null}
